@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Opcions de exemple1</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+  <body class="min-h-screen bg-gradient-to-br from-purple-300 via-purple-400 to-purple-600">
+
+    <!-- Navbar selector -->
+    <div class="w-full bg-gradient-to-r from-purple-300 via-purple-400 to-purple-600 shadow-lg py-4 fixed top-0 flex justify-center items-center space-x-4 z-10">
+      <h1 class="text-white text-xl font-bold uppercase tracking-wide">Selecciona un format</h1>
+      <select id="select1" onchange="showImage()" class="block w-64 p-2 bg-purple-100 text-purple-700 border border-purple-300 rounded-full shadow-md focus:outline-none focus:ring-4 focus:ring-purple-300 transition ease-in-out duration-300 transform hover:scale-105">
+        <option value="">Format per l'exemple1...</option>
+        <option value="1">Format PNG</option>
+        <option value="2">Format JPG</option>
+        <option value="3">Format GIF</option>
+      </select>
+    </div>
+
+    <div id="image-container" class="pt-16">
+      <img id="img1" src="./images/transparency.png" class="hidden w-full h-screen object-cover">
+      <img id="img2" src="./images/transparency.jpg" class="hidden w-full h-screen object-cover">
+      <img id="img3" src="./images/transparency.gif" class="hidden w-full h-screen object-cover">
+    </div>
+
+    <div id="info-container" class="text-center py-8 px-4 bg-white bg-opacity-90 text-gray-800">
+      <p id="info1" class="hidden">Aquesta imatge PNG te una mida de 8,75KB i una profunditat de 8 bits.</p>
+      <p id="info2" class="hidden">Aquesta imatge JPG te una mida de 6,72KB i una profunditat de 24 bits.</p>
+      <p id="info3" class="hidden">Aquesta imatge GIF te una mida de 1,25KB i una profunditat de 8 bits.</p>
+    </div>
+
+    <script>
+      function showImage() {
+        var selectValue = document.getElementById("select1").value;
+
+        document.querySelectorAll('#image-container img').forEach(img => img.classList.add('hidden'));
+        document.querySelectorAll('#info-container p').forEach(info => info.classList.add('hidden'));
+
+        if (selectValue === '1') {
+          document.getElementById('img1').classList.remove('hidden');
+          document.getElementById('info1').classList.remove('hidden');
+        } else if (selectValue === '2') {
+          document.getElementById('img2').classList.remove('hidden');
+          document.getElementById('info2').classList.remove('hidden');
+        } else if (selectValue === '3') {
+          document.getElementById('img3').classList.remove('hidden');
+          document.getElementById('info3').classList.remove('hidden');
+        }
+      }
+    </script>
+
+  </body>
+</html>
