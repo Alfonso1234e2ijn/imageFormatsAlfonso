@@ -18,32 +18,62 @@
         <option value="4">Format JPG - Medium Quality</option>
         <option value="5">Format JPG - Low Quality</option>
         <option value="3">Format GIF</option>
+        <option value="7">Format WebP-Loseless</option>
       </select>
     </div>
 
+    <!-- Image container -->
     <div id="image-container" class="pt-16">
       <img id="img1" src="./images/narutoImage.png" class="hidden w-full h-screen object-cover">
       <img id="img2" src="./images/narutoImage.jpg" class="hidden w-full h-screen object-cover">
       <img id="img4" src="./images/narutoImageMQ.jpg" class="hidden w-full h-screen object-cover">
       <img id="img5" src="./images/narutoImageLQ.jpg" class="hidden w-full h-screen object-cover">
       <img id="img3" src="./images/narutoImage.gif" class="hidden w-full h-screen object-cover">
+      <img id="img7" src="./images/narutoImageWebpLoseless.webp" class="hidden w-full h-screen object-cover">
     </div>
 
+    <!-- Info container -->
     <div id="info-container" class="text-center py-8 px-4 bg-white bg-opacity-90 text-gray-800">
       <p id="info1" class="hidden">Aquesta imatge PNG te una mida de 13,1MB i una profunditat de 24 bits.</p>
       <p id="info2" class="hidden">Aquesta imatge JPG-HQ te una mida de 2,65MB i una profunditat de 24 bits.</p>
       <p id="info4" class="hidden">Aquesta imatge JPG-MQ te una mida de 727KB i una profunditat de 24 bits.</p>
       <p id="info5" class="hidden">Aquesta imatge JPG-LQ te una mida de 145KB i una profunditat de 24 bits.</p>
       <p id="info3" class="hidden">Aquesta imatge GIF te una mida de 5,08MB i una profunditat de 8 bits.</p>
+      <p id="info7" class="hidden">Aquesta imatge WebP te una mida de 3,25MB i una profunditat de 24 bits a més a més hem obtingut un estalvi del 45,7%</p>
+      
+      <!-- Table placeholder -->
+      <div id="table-container" class="hidden mt-4">
+        <table class="w-full max-w-lg mx-auto table-auto border-collapse border border-gray-300">
+          <thead class="bg-indigo-500 text-white">
+            <tr>
+              <th class="border border-gray-300 px-4 py-2">Nom Imatge</th>
+              <th class="border border-gray-300 px-4 py-2">Mida Original</th>
+              <th class="border border-gray-300 px-4 py-2">JPG (Estalvi %)</th>
+              <th class="border border-gray-300 px-4 py-2">WebP (Estalvi %)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="bg-gray-100">
+              <td class="border border-gray-300 px-4 py-2">narutoImageWebpLoseless.webp</td>
+              <td class="border border-gray-300 px-4 py-2">3,25MB</td>
+              <td class="border border-gray-300 px-4 py-2">727KB (77,5%)</td>
+              <td class="border border-gray-300 px-4 py-2">3,25MB (45,7%)</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
     </div>
 
     <script>
       function showImage() {
         var selectValue = document.getElementById("select1").value;
 
+        // Hide all images and info
         document.querySelectorAll('#image-container img').forEach(img => img.classList.add('hidden'));
         document.querySelectorAll('#info-container p').forEach(info => info.classList.add('hidden'));
+        document.getElementById('table-container').classList.add('hidden');
 
+        // Show selected image and info
         if (selectValue === '1') {
           document.getElementById('img1').classList.remove('hidden');
           document.getElementById('info1').classList.remove('hidden');
@@ -59,6 +89,10 @@
         } else if (selectValue === '3') {
           document.getElementById('img3').classList.remove('hidden');
           document.getElementById('info3').classList.remove('hidden');
+        } else if (selectValue === '7') {
+          document.getElementById('img7').classList.remove('hidden');
+          document.getElementById('info7').classList.remove('hidden');
+          document.getElementById('table-container').classList.remove('hidden');
         }
       }
     </script>
